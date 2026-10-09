@@ -1,0 +1,23 @@
+services:
+  api:
+    build:
+      context: .
+      args:
+        APP_UID: ${APP_UID:-1000}
+    image: voting-auth-api:task2
+    container_name: voting-auth-api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      # paths inside the container (override whatever is in .env)
+      DATABASE_URL: sqlite:////app/data/app.db
+      LOG_DIR: /app/logs
+    volumes:
+      - ./logs:/app/logs          # logs/logs.log shows up in the repo on your machine
+      - app-data:/app/data        # SQLite database survives restarts
+    restart: unless-stopped
+
+volumes:
+  app-data:

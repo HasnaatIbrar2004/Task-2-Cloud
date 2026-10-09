@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "task1"
+version = "0.1.0"
+description = "Authentication API (users + admins with email MFA) for a voting system"
+authors = [" <suza001@student.kristiania.no>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.115.0"
+uvicorn = {extras = ["standard"], version = "^0.30.0"}
+sqlalchemy = "^2.0"
+pydantic = {extras = ["email"], version = "^2.7"}
+pydantic-settings = "^2.3"
+pyjwt = "^2.8"
+bcrypt = "^4.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+httpx = "^0.27"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
